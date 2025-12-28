@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        background-color: #ffeead;
+        margin: 10px;
+      }
+
+      .container {
+        display: grid;
+        /*grid-template-columns: repeat(3, 1fr); /*width*/
+        /*grid-template-rows: 100px 100px; /*height*/
+        grid-template: repeat(4, 100px) / repeat(3, 1fr); /*rows and columns*/
+        grid-gap: 3px;
+        grid-template-areas:
+          "header header aside"
+          "main   main   aside"
+          "footer footer footer";
+      }
+
+      /*Style grid*/
+      .container > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+
+        &:nth-child(1n) {
+          background-color: #96ceb4;
+        }
+
+        &:nth-child(2n) {
+          background-color: #ff6f69;
+        }
+
+        &.header {
+          /* grid-column-start:1;
+            grid-column-end: 4; */
+          grid-column: 1 / -1; /*short way*/
+
+          /*span = only n line next*/
+        }
+
+        &.main {
+          grid-column-start: 1;
+          grid-column-end: 3;
+        }
+
+        &.aside {
+        }
+
+        &.footer {
+          grid-column: 1 / -1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">HEADER</div>
+      <div class="main">MAIN</div>
+      <div class="aside">ASIDE</div>
+      <div class="footer">FOOTER</div>
+    </div>
+  </body>
+</html>
