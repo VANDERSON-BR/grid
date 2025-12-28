@@ -66,6 +66,19 @@
         }
       }
 
+      /*Bar device*/
+      body::before {
+        content: "DESKTOP (>768px)";
+        display: block;
+        text-align: center;
+        padding: 10px;
+        background-color: #88d8b0;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
       /* MEDIA QUERIES */
       @media (max-width: 768px) {
         .container {
@@ -75,6 +88,11 @@
             "footer footer";
           grid-template-columns: 2fr 1fr;
           grid-template-rows: 80px 200px 80px;
+        }
+
+        body::before {
+          content: "TABLET (≤768px)";
+          background-color: #ffcc5c;
         }
       }
 
@@ -88,28 +106,7 @@
           grid-template-columns: 1fr;
           grid-template-rows: 60px 150px 200px 60px;
         }
-      }
 
-      body::before {
-        content: "DESKTOP (>768px)";
-        display: block;
-        text-align: center;
-        padding: 10px;
-        background-color: #88d8b0;
-        color: white;
-        font-weight: bold;
-        margin-bottom: 10px;
-        border-radius: 5px;
-      }
-
-      @media (max-width: 768px) {
-        body::before {
-          content: "TABLET (≤768px)";
-          background-color: #ffcc5c;
-        }
-      }
-
-      @media (max-width: 480px) {
         body::before {
           content: "MOBILE (≤480px)";
           background-color: #ff6f69;
