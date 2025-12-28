@@ -19,14 +19,13 @@
 
       .container {
         display: grid;
-        /*grid-template-columns: repeat(3, 1fr); /*width*/
-        /*grid-template-rows: 100px 100px; /*height*/
-        grid-template: repeat(4, 100px) / repeat(3, 1fr); /*rows and columns*/
-        grid-gap: 3px;
+        grid-template-columns: repeat(3, 1fr); /*width*/
+        grid-template-rows: 100px 300px 100px; /*height*/
         grid-template-areas:
-          "header header aside"
-          "main   main   aside"
+          "header header header"
+          "main main aside"
           "footer footer footer";
+        grid-gap: 3px;
       }
 
       /*Style grid*/
@@ -45,23 +44,75 @@
         }
 
         &.header {
-          /* grid-column-start:1;
-            grid-column-end: 4; */
-          grid-column: 1 / -1; /*short way*/
-
-          /*span = only n line next*/
+          /* grid-column: 1 / 3; */
+          grid-area: header;
         }
 
         &.main {
-          grid-column-start: 1;
-          grid-column-end: 3;
+          /* grid-column-start: 1;
+          grid-column-end: 3; */
+          grid-area: main;
         }
 
         &.aside {
+          /* grid-column: 3 / -1;
+          grid-row: 1 / -1; */
+          grid-area: aside;
         }
 
         &.footer {
-          grid-column: 1 / -1;
+          /* grid-column: 1 / 3; */
+          grid-area: footer;
+        }
+      }
+
+      /* MEDIA QUERIES */
+      @media (max-width: 768px) {
+        .container {
+          grid-template-areas:
+            "header header"
+            "main aside"
+            "footer footer";
+          grid-template-columns: 2fr 1fr;
+          grid-template-rows: 80px 200px 80px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          grid-template-areas:
+            "header "
+            "aside"
+            "main"
+            "footer";
+          grid-template-columns: 1fr;
+          grid-template-rows: 60px 150px 200px 60px;
+        }
+      }
+
+      body::before {
+        content: "DESKTOP (>768px)";
+        display: block;
+        text-align: center;
+        padding: 10px;
+        background-color: #88d8b0;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      @media (max-width: 768px) {
+        body::before {
+          content: "TABLET (≤768px)";
+          background-color: #ffcc5c;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body::before {
+          content: "MOBILE (≤480px)";
+          background-color: #ff6f69;
         }
       }
     </style>
